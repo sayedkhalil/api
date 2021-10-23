@@ -1,0 +1,30 @@
+const functions = require('firebase-functions');
+const express = require("express")
+const bodyparser = require("body-parser")
+const corse = require("cors")
+const app = express()
+const userrouter = require('./model/api/Usercontroler')
+const pagerouter = require('./model/api/Pagecontorler')
+const temprouter = require('./model/api/tempcontroler')
+const imagecr = require('./model/api/imagecr')
+const eventrouter = require('./model/api/eventscontroler')
+const qecode = require('./model/api/qrcode') 
+const authrouter =require('./model/api/authcontroler')
+const cvrouter =require('./model/api/cvcontroler')
+const menuerouter =require('./model/api/menuecontroler')
+app.use(corse())
+app.use(bodyparser.json())
+app.use("/cart",userrouter) 
+app.use("/menue",menuerouter)
+app.use("/event",eventrouter)
+app.use("/page",pagerouter)
+app.use("/temp",temprouter)
+app.use("/cv",cvrouter)
+app.use("/img",imagecr)
+ app.use("/qr",qecode) 
+ app.use('/auth',authrouter) 
+
+
+ 
+
+ app.listen(process.env.PORT || 3003) 
